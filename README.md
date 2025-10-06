@@ -6,7 +6,7 @@ The project includes **conceptual and physical data models** as well as **SQL sc
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - **PowerDesigner** – database modeling (Conceptual and Physical Data Models)  
 - **SQL Server 2008+** – schema definition, constraints, and triggers  
@@ -14,7 +14,7 @@ The project includes **conceptual and physical data models** as well as **SQL sc
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ~~~text
 .
@@ -34,7 +34,7 @@ The project includes **conceptual and physical data models** as well as **SQL sc
 
 ---
 
-## 📄 Data Model Overview
+## Data Model Overview
 
 ### Entities
 - **Teams / Countries** – groups, codes, names  
@@ -53,7 +53,7 @@ The project includes **conceptual and physical data models** as well as **SQL sc
 
 ---
 
-## ⚙️ Business Rules Implemented (via Triggers)
+## Business Rules Implemented (via Triggers)
 
 - **Summoning Players:**  
   Cannot summon a player who does not belong to one of the teams in the match:contentReference[oaicite:3]{index=3}.  
@@ -72,7 +72,7 @@ The project includes **conceptual and physical data models** as well as **SQL sc
 
 ---
 
-## 🚀 How to Use
+## How to Use
 
 1. Open the **PowerDesigner models** (`.cdm` and `.pdm`) to view conceptual and physical diagrams.  
    - Optionally check exported diagrams under `models/exports/`.  
@@ -86,17 +86,12 @@ The project includes **conceptual and physical data models** as well as **SQL sc
 
 ---
 
-## ✅ Requirements
+## Requirements
 
 - PowerDesigner (to view/edit `.cdm` and `.pdm`)  
 - Microsoft SQL Server 2008 or later  
 - SQL Server Management Studio (SSMS)  
 
----
-
-## 📄 License
-
-This project is licensed under the MIT License – see the LICENSE file for details.
 
 
 
