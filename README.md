@@ -1,106 +1,102 @@
-# Breast Cancer Image Classification with Deep Learning
+# World Cup Database Design and SQL Implementation
 
-This project applies **Convolutional Neural Networks (CNNs)** to the task of **breast cancer diagnosis** using medical imaging data.  
-It compares **binary classification** (benign vs malignant) with **multi-class classification** (cancer subtypes), evaluating models through multiple metrics and visualizations.
+A database project designed in **PowerDesigner** and implemented in **Microsoft SQL Server**, modeling and enforcing the rules of a **World Cup-style football tournament**.  
 
----
-
-##  Project Structure
-- `Functions_Group_8.py` → Helper functions for preprocessing, training, and evaluation  
-- `Notebook_Group_8.ipynb` → Jupyter notebook with experiments and results  
-- `Report_Group_8.pdf` → Final academic report (with methodology, results, and discussion)  
-- `Report_Group_8 - Latex/` → LaTeX source files for the report  
+The project includes **conceptual and physical data models** as well as **SQL scripts** for schema creation, constraints, and advanced triggers to enforce business rules.
 
 ---
 
-##  Installation
-Clone the repository and install dependencies:
+## 🧰 Tech Stack
 
-```bash
-git clone https://github.com/yourusername/breast-cancer-image-classification.git
-cd breast-cancer-image-classification
-pip install -r requirements.txt
+- **PowerDesigner** – database modeling (Conceptual and Physical Data Models)  
+- **SQL Server 2008+** – schema definition, constraints, and triggers  
+- **T-SQL** – advanced logic for enforcing tournament rules  
 
-Requirements
-Main dependencies:
+---
 
-numpy
+## 📁 Repository Structure
 
-pandas
+~~~text
+.
+├─ models/
+│  ├─ Final Project - Conceptual Data Model.cdm
+│  ├─ Final Project - Physical Data Model.pdm
+│  └─ exports/                # optional: export diagrams to PDF/PNG
+├─ sql/
+│  ├─ Final Project - SQL.sql  # main DDL schema
+│  ├─ create_mundial.sql       # schema + constraints + triggers
+│  ├─ SQL Script.sql           # triggers and business rules
+├─ docs/
+│  └─ Report.pdf               # optional project report
+├─ README.md
+└─ LICENSE
+~~~
 
-scikit-learn
+---
 
-imbalanced-learn
+## 📄 Data Model Overview
 
-Pillow
+### Entities
+- **Teams / Countries** – groups, codes, names  
+- **Players** – personal data, positions, country association  
+- **Coaches / Referees** – linked to countries  
+- **Stadiums & Cities** – hosting matches  
+- **Matches** – teams, stage, referee, stadium, date/time  
+- **Events** – goals, cards, replacements  
+- **Summoned Players** – players available per match (starting 11 or bench)
 
-opencv-python
+### Relationships
+- Players belong to teams/countries  
+- Matches belong to tournament phases and stadiums  
+- Events link to matches and summoned players  
+- Constraints ensure tournament rules (e.g., group assignments, unique codes)  
 
-tensorflow
+---
 
-keras
+## ⚙️ Business Rules Implemented (via Triggers)
 
-matplotlib
+- **Summoning Players:**  
+  Cannot summon a player who does not belong to one of the teams in the match:contentReference[oaicite:3]{index=3}.  
 
-seaborn
+- **Referee Restrictions:**  
+  Referees cannot officiate matches involving their own country (both on insert and update):contentReference[oaicite:4]{index=4}:contentReference[oaicite:5]{index=5}.  
 
-plotly
+- **Yellow/Red Card Rule:**  
+  If a player receives a second yellow card in the same match, an automatic red card event is inserted:contentReference[oaicite:6]{index=6}.  
 
-jupyter
+- **Goal Validation:**  
+  A goal is only valid if the scorer was on the field (starting or substituted, not sent off):contentReference[oaicite:7]{index=7}:contentReference[oaicite:8]{index=8}.  
 
-(See requirements.txt for the full list)
+- **Substitution Validation:**  
+  Ensures the player out was on the field, the player in was on the bench, and both belong to the same team in the same match:contentReference[oaicite:9]{index=9}:contentReference[oaicite:10]{index=10}.  
 
-📊 Features
-Preprocessing and augmentation of breast cancer imaging datasets
+---
 
-Binary classification (benign vs malignant)
+## 🚀 How to Use
 
-Multi-class classification (cancer subtypes)
+1. Open the **PowerDesigner models** (`.cdm` and `.pdm`) to view conceptual and physical diagrams.  
+   - Optionally check exported diagrams under `models/exports/`.  
 
-Deep Learning models based on CNNs:
+2. Run the SQL scripts in **SQL Server Management Studio (SSMS)**:  
+   - `Final Project - SQL.sql` → creates the main schema and constraints.  
+   - `create_mundial.sql` → builds tables and adds advanced triggers.  
+   - `SQL Script.sql` → implements additional triggers for business rules.  
 
-VGG16, ResNet50, Custom CNN
+3. Insert test data (optional) and validate triggers by simulating matches, goals, cards, and substitutions.  
 
-Evaluation metrics:
+---
 
-ROC, Precision-Recall, F1 Score
+## ✅ Requirements
 
-Confusion Matrices & Heatmaps
+- PowerDesigner (to view/edit `.cdm` and `.pdm`)  
+- Microsoft SQL Server 2008 or later  
+- SQL Server Management Studio (SSMS)  
 
-Calibration curves
+---
 
-Comparative analysis between binary and multi-class approaches
+## 📄 License
 
-🧪 Usage
-Open the Jupyter notebook and run the experiments:
-
-bash
-Copiar código
-jupyter notebook Notebook_Group_8.ipynb
-Or import helper functions from Functions_Group_8.py in your own scripts.
-
-📖 Report
-The full research report is available here:
-👉 Report_Group_8.pdf
-
-👥 Authors
-Carolina Almeida
-
-Duarte Carvalho
-
-Francisco Gomes
-
-Margarida Henriques
-
-Marta Monteiro
-
-
-
-📜 License
 This project is licensed under the MIT License – see the LICENSE file for details.
-
-yaml
-Copiar código
 
 
 
